@@ -19,7 +19,7 @@ export class Client {
   this.url = new URL(host, index);
   }
 
-  async get(params: SearchParams) {
+  async get(params?: SearchParams) {
     const url = new URL(`${this.url}/_search?${params.queryParameters ?? ""}`);
 
     const response = await fetch(url, {
