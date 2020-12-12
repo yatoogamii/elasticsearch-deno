@@ -8,14 +8,12 @@ export class Client {
    * @param {string} index index of the elastic server.
    */
   constructor(host: string, index: string) {
-  this.url = new URL(index, host);
+    this.url = new URL(index, host);
   }
 
-  async get(body?: JSON) {
-    const url = new URL(`${this.url}/_search?`);
+  async get(docName: String = "", body?: JSON) {
+    const url = new URL(`${this.url}/${docName}/_search?`);
 
-    console.log(url);
-    
     const response = await fetch(url.toString(), {
       method: "GET",
       headers: {
