@@ -22,7 +22,7 @@ export class Client {
   async get(params?: SearchParams) {
     const url = new URL(`${this.url}/_search?${params?.queryParameters ?? ""}`);
 
-    const response = await fetch(url, {
+    const response = await fetch(url.toString(), {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
