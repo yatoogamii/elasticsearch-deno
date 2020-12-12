@@ -1,6 +1,9 @@
+import { get } from "./crud/get.ts";
+
 /** Class representing an elasticsearch client. */
 export class Client {
   readonly url: URL;
+  get: (docName: string, body?: JSON) => Promise<JSON>;
 
   /**
    * Create a new elasticsearch client.
@@ -9,19 +12,6 @@ export class Client {
    */
   constructor(host: string, index: string) {
     this.url = new URL(index, host);
-  }
-
-  async get(docName: String = "", body?: JSON) {
-    const url = new URL(`${this.url}/${docName}/_search?`);
-
-    const response = await fetch(url.toString(), {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
-
-    return response.json();
+    this.get = get(this.url);
   }
 }
