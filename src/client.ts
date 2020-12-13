@@ -1,17 +1,11 @@
-import { get } from "./crud/get.ts";
+import { get, getById } from "./crud/get.ts";
 
-/** Class representing an elasticsearch client. */
-export class Client {
-  readonly url: URL;
-  get: (docName: string, body?: JSON) => Promise<JSON>;
+export const client = (host: string, index: string) => {
+  const url = new URL(index, host);
 
-  /**
-   * Create a new elasticsearch client.
-   * @param {string} host URL of the host of elastic server.
-   * @param {string} index index of the elastic server.
-   */
-  constructor(host: string, index: string) {
-    this.url = new URL(index, host);
-    this.get = get(this.url);
-  }
-}
+  return {
+    url,
+    get: get(url),
+    getById: getById(url),
+  };
+};

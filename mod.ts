@@ -1,1 +1,1 @@
-export { Client } from "./src/client.ts";
+export { client } from "./src/client.ts";
