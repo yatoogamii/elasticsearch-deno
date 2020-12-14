@@ -1,5 +1,6 @@
 import { get, GetArgs, getById, GetByIdArgs } from "./crud/get.ts";
-import { GetResponseBody } from "../types/Elasticsearch.ts";
+import { SearchResponseBody } from "../types/Search.ts";
+import { GetByIdResponseBody } from "../types/Get.ts";
 
 interface ClientInfos {
   host: string;
@@ -7,10 +8,10 @@ interface ClientInfos {
 }
 
 interface ClientMethods {
-  get<T>({ docName, body }: GetArgs): Promise<GetResponseBody<T>>;
+  get<T>({ docName, body }: GetArgs): Promise<SearchResponseBody<T>>;
   getById<T>(
     { docName, docId }: GetByIdArgs,
-  ): Promise<GetResponseBody<T>>;
+  ): Promise<GetByIdResponseBody<T>>;
 }
 
 export const client = ({ host, index }: ClientInfos): ClientMethods => {

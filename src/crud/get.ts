@@ -1,4 +1,5 @@
-import { GetResponseBody } from "../../types/Elasticsearch.ts";
+import { SearchResponseBody } from "../../types/Search.ts";
+import { GetByIdResponseBody } from "../../types/Get.ts";
 
 export interface GetArgs {
   docName: string;
@@ -8,7 +9,7 @@ export interface GetArgs {
 export const get = <T>(url: URL) =>
   async (
     { docName, body }: GetArgs,
-  ): Promise<GetResponseBody<T>> => {
+  ): Promise<SearchResponseBody<T>> => {
     const query = new URL(`${url}/${docName}/_search?`);
 
     const response = await fetch(query.toString(), {
@@ -30,7 +31,7 @@ export interface GetByIdArgs {
 export const getById = <T>(url: URL) =>
   async (
     { docName, docId }: GetByIdArgs,
-  ): Promise<GetResponseBody<T>> => {
+  ): Promise<GetByIdResponseBody<T>> => {
     const query = new URL(`${url}/${docName}/${docId}`);
 
     const response = await fetch(query.toString());

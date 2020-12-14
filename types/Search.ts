@@ -1,4 +1,4 @@
-export interface GetResponseBody<T> {
+export interface SearchResponseBody<T> {
   // Identifier for the search and its search context
   _scroll_id?: string;
   // Milliseconds it took Elasticsearch to execute the request
