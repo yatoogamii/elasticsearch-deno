@@ -1,6 +1,7 @@
-import { get, GetArgs, getById, GetByIdArgs } from "./crud/get.ts";
-import { SearchResponseBody } from "../types/Search.ts";
-import { GetByIdResponseBody } from "../types/Get.ts";
+import { getById, GetByIdArgs } from "./document/get/get.ts";
+import { search, SearchArgs } from "./search/search.ts";
+import { SearchResponseBody } from "../types/search/Search.ts";
+import { GetByIdResponseBody } from "../types/document/get/Get.ts";
 
 interface ClientInfos {
   host: string;
@@ -8,7 +9,7 @@ interface ClientInfos {
 }
 
 interface ClientMethods {
-  get<T>({ docName, body }: GetArgs): Promise<SearchResponseBody<T>>;
+  search<T>({ docName, body }: SearchArgs): Promise<SearchResponseBody<T>>;
   getById<T>({ docName, docId }: GetByIdArgs): Promise<GetByIdResponseBody<T>>;
 }
 
@@ -17,7 +18,7 @@ export const client = ({ host, index }: ClientInfos): ClientMethods => {
 
   return {
     // document APIs
-    get: get(url),
+    search: search(url),
     getById: getById(url),
 
     // search APIs
