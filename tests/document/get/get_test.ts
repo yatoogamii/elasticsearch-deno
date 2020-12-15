@@ -1,5 +1,5 @@
-import { client } from "../../src/client.ts";
-import { assert, assertStrictEquals, test } from "../../test_deps.ts";
+import { client } from "../../../mod.ts";
+import { assert, assertStrictEquals, test } from "../../../test_deps.ts";
 
 test("get fetch", async () => {
   const elasticClient = client({
