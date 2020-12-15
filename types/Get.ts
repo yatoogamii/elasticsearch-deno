@@ -25,13 +25,13 @@ export interface GetByIdResponseBody<T> {
    * The sequence number assigned to the document for the indexing operation.
    * Sequence numbers are used to ensure an older version of a document doesn’t overwrite a newer version
    *
-   * See @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#optimistic-concurrency-control-index
+   * @link concurrency control index https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#optimistic-concurrency-control-index
    */
   _seq_no: number;
   /**
    * The primary term assigned to the document for the indexing operation
    *
-   * See @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#optimistic-concurrency-control-index
+   * @link concurrency control index https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#optimistic-concurrency-control-index
    */
   _primary_term: number;
   /**
@@ -72,7 +72,7 @@ export interface GetByIdQueryParams {
    *
    * @defaultValue `false`
    *
-   * see @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime
+   * @link realtime https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime
    */
   refresh?: boolean;
   /**
@@ -96,7 +96,7 @@ export interface GetByIdQueryParams {
    *
    * If the `_source` parameter is `false`, this parameter is ignored
    *
-   * See source fields @link https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html
+   * @link source fields https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html
    */
   _source_excludes?: string;
   /**
@@ -106,7 +106,7 @@ export interface GetByIdQueryParams {
    *
    * If the `_source` parameter is `false`, this parameter is ignored
    *
-   * See source fields @link https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html
+   * @link source fields https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html
    */
   _source_includes?: string;
   /**
