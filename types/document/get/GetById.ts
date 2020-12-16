@@ -1,3 +1,9 @@
+export interface GetByIdArgs {
+  docName: string;
+  docId: string;
+  queryParams?: GetByIdQueryParams;
+}
+
 /**
  * Wrapper for an GET Response Body
  * @typeParam T - type of source
@@ -88,7 +94,7 @@ export interface GetByIdQueryParams {
   /**
    * True or false to return the `_source` field or not, or a list of fields to return
    */
-  _source?: string;
+  _source?: boolean;
   /**
    * A comma-separated list of source fields to exclude from the response.
    *

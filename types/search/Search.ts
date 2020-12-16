@@ -1,3 +1,9 @@
+export interface SearchArgs {
+  docName: string;
+  requestBody?: SearchRequestBody;
+  queryParams?: any;
+}
+
 /**
  * Wrapper for an Search Response Body
  * @typeParam T - type of source

@@ -1,26 +1,18 @@
-import { getById, GetByIdArgs } from "./document/get/get.ts";
-import { search, SearchArgs } from "./search/search.ts";
-import { SearchResponseBody } from "../types/search/Search.ts";
-import { GetByIdResponseBody } from "../types/document/get/Get.ts";
-
-interface ClientInfos {
-  host: string;
-  index: string;
-}
-
-interface ClientMethods {
-  search<T>({ docName, body }: SearchArgs): Promise<SearchResponseBody<T>>;
-  getById<T>({ docName, docId }: GetByIdArgs): Promise<GetByIdResponseBody<T>>;
-}
+import { ClientInfos, ClientMethods } from "../types/Client.ts";
+import { getById } from "./document/get/getById.ts";
+import { search } from "./search/search.ts";
+import { indexDoc } from "./document/index/indexDoc.ts";
+import { queryParamsFormater } from "../utils/queryParamsFormater.ts";
 
 export const client = ({ host, index }: ClientInfos): ClientMethods => {
   const url = new URL(index, host);
 
   return {
     // document APIs
-    search: search(url),
-    getById: getById(url),
+    getById: getById({ url, queryParamsFormater }),
+    indexDoc: indexDoc({ url, queryParamsFormater }),
 
     // search APIs
+    search: search({ url, queryParamsFormater }),
   };
 };

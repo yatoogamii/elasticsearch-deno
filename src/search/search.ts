@@ -1,22 +1,24 @@
-import { SearchResponseBody } from "../../types/search/Search.ts";
+import { SearchArgs, SearchResponseBody } from "../../types/search/Search.ts";
+import { ClientMethodsWrapper } from "../../types/Client.ts";
 
-export interface SearchArgs {
-  docName: string;
-  body?: JSON;
-}
-
-export const search = (url: URL) => async <T>({
+export const search = ({
+  url,
+  queryParamsFormater,
+}: ClientMethodsWrapper) => async <T>({
   docName,
-  body,
+  requestBody,
+  queryParams,
 }: SearchArgs): Promise<SearchResponseBody<T>> => {
-  const query = new URL(`${url}/${docName}/_search?`);
+  const query = new URL(
+    `${url}/${docName}/_search/${queryParamsFormater(queryParams) ?? ""}`
+  );
 
-  const response = await fetch(query.toString(), {
+  const response = await fetch(query, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(requestBody),
   });
 
   return response.json();

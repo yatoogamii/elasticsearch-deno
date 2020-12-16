@@ -1,5 +1,5 @@
 import { client } from "../../../mod.ts";
-import { assert, assertStrictEquals, test } from "../../../test_deps.ts";
+import { assertStrictEquals, test } from "../../../test_deps.ts";
 
 test("getById request", async () => {
   const elasticClient = client({
@@ -8,7 +8,8 @@ test("getById request", async () => {
   });
   const user = await elasticClient.getById<{ name: string }>({
     docName: "users",
-    docId: "HsPIVnYBFrCgaxVLqpC9",
+    docId: "JMNvZ3YBFrCgaxVLo5B3",
+    queryParams: { _source: true },
   });
 
   assertStrictEquals("Lucile", user._source!.name);
