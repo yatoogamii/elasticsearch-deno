@@ -1,5 +1,8 @@
 import { ClientMethodsWrapper } from "../../../types/Client.ts";
-import { IndexDocArgs } from "../../../types/document/index/IndexDoc.ts";
+import {
+  IndexDocArgs,
+  IndexDocResponseBody,
+} from "../../../types/document/index/IndexDoc.ts";
 
 export const indexDoc = ({
   url,
@@ -9,7 +12,7 @@ export const indexDoc = ({
   docId,
   requestBody,
   queryParams,
-}: IndexDocArgs): Promise<any> => {
+}: IndexDocArgs): Promise<IndexDocResponseBody> => {
   const query = new URL(
     `${url}/${docName}/${docId ?? ""}${queryParamsFormater(queryParams) ?? ""}`
   );

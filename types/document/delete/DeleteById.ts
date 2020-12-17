@@ -1,40 +1,33 @@
-export interface IndexDocArgs {
+export interface DeleteByIdArgs {
   docName: string;
-  docId?: string;
-  requestBody: IndexDocRequestBody;
-  queryParams?: IndexDocQueryParams;
+  docId: string;
+  queryParams?: DeleteByIdQueryParams;
 }
 
-export interface IndexDocQueryParams {
+export interface DeleteByIdQueryParams {
   if_seq_no?: number;
   if_primary_term?: number;
-  op_type?: "index" | "create";
   pipeline?: string;
-  refresh?: string;
+  refresh?: boolean | "wait_for";
   routing?: string;
   master_timeout?: any;
   timeout?: any;
   version?: number;
   version_type?: "internal" | "external" | "external_gte";
   wait_for_active_shards?: string;
-  require_alias?: boolean;
 }
 
-export interface IndexDocRequestBody {
-  [field: string]: any;
-}
-
-export interface IndexDocResponseBody {
+export interface DeleteByIdResponseBody {
   _shards: {
     total: number;
-    successful: number;
     failed: number;
+    successful: number;
   };
   _index: string;
   _type: string;
   _id: string;
   _version: number;
-  _seq_no: number;
   _primary_term: number;
-  _result: "created" | "updated";
+  _seq_no: number;
+  result: "created" | "updated";
 }

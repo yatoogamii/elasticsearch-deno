@@ -1,10 +1,14 @@
 import { isObject, isObjectEmpty } from "./object.ts";
 import { GetByIdQueryParams } from "../types/document/get/GetById.ts";
 import { SearchQueryParams } from "../types/search/Search.ts";
+import { IndexDocQueryParams } from "../types/document/index/IndexDoc.ts";
+import { DeleteByQueryQueryParams } from "../types/document/delete/DeleteByQuery.ts";
 
 export type QueryParamsFormaterArgs =
+  | IndexDocQueryParams
   | GetByIdQueryParams
   | SearchQueryParams
+  | DeleteByQueryQueryParams
   | undefined;
 
 export const queryParamsFormater = (queryParams: QueryParamsFormaterArgs) => {

@@ -1,15 +1,20 @@
 import { client } from "../../../mod.ts";
 import { assertStrictEquals, test } from "../../../test_deps.ts";
 
-test("getById request", async () => {
+test("deleteByQuery request", async () => {
   // const elasticClient = client({
   //   host: "http://localhost:9200",
   //   index: "plateform",
   // });
-  // const user = await elasticClient.getById<{ name: string }>({
+  // const user = await elasticClient.deleteByQuery({
   //   docName: "users",
-  //   docId: "JMNvZ3YBFrCgaxVLo5B3",
-  //   queryParams: { _source: true },
+  //   requestBody: {
+  //     query: {
+  //       match: {
+  //         name: "roger"
+  //       }
+  //     }
+  //   }
   // });
-  // assertStrictEquals("Lucile", user._source!.name);
+  // console.log(user);
 });

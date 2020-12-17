@@ -31,13 +31,13 @@ export interface GetByIdResponseBody<T> {
    * The sequence number assigned to the document for the indexing operation.
    * Sequence numbers are used to ensure an older version of a document doesn’t overwrite a newer version
    *
-   * @link concurrency control index https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#optimistic-concurrency-control-index
+   * @link Optimistic concurrency control https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#optimistic-concurrency-control-index
    */
   _seq_no: number;
   /**
    * The primary term assigned to the document for the indexing operation
    *
-   * @link concurrency control index https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#optimistic-concurrency-control-index
+   * @link Optimistic concurrency control https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#optimistic-concurrency-control-index
    */
   _primary_term: number;
   /**
@@ -56,7 +56,7 @@ export interface GetByIdResponseBody<T> {
   /**
    * If the `stored_fields` parameter is set to `true` and `found` is `true`, contains the document fields stored in the index
    */
-  _fields?: any;
+  _fields?: Partial<T>;
 }
 
 export interface GetByIdQueryParams {
@@ -96,7 +96,7 @@ export interface GetByIdQueryParams {
    */
   _source?: boolean;
   /**
-   * A comma-separated list of source fields to exclude from the response.
+   * A comma-separated list of *source fields* to exclude from the response.
    *
    * You can also use this parameter to exclude fields from the subset specified in `_source_includes` query parameter
    *
@@ -106,7 +106,7 @@ export interface GetByIdQueryParams {
    */
   _source_excludes?: string;
   /**
-   * A comma-separated list of source fields to include in the response.
+   * A comma-separated list of *source fields* to include in the response.
    *
    * You can also use this parameter to exclude fields from the subset specified in `_source_includes` query parameter
    *

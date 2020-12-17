@@ -1,7 +1,7 @@
 export interface SearchArgs {
   docName: string;
   requestBody?: SearchRequestBody;
-  queryParams?: any;
+  queryParams?: SearchQueryParams;
 }
 
 /**

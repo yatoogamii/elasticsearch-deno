@@ -1,5 +1,16 @@
 import { GetByIdArgs, GetByIdResponseBody } from "./document/get/GetById.ts";
-import { IndexDocArgs } from "./document/index/IndexDoc.ts";
+import {
+  DeleteByIdArgs,
+  DeleteByIdResponseBody,
+} from "./document/delete/DeleteById.ts";
+import {
+  DeleteByQueryArgs,
+  DeleteByQueryResponseBody,
+} from "./document/delete/DeleteByQuery.ts";
+import {
+  IndexDocArgs,
+  IndexDocResponseBody,
+} from "./document/index/IndexDoc.ts";
 import { SearchArgs, SearchResponseBody } from "./search/Search.ts";
 import { QueryParamsFormaterArgs } from "../utils/queryParamsFormater.ts";
 
@@ -33,7 +44,22 @@ export interface ClientMethods {
     docId,
     requestBody,
     queryParams,
-  }: IndexDocArgs): Promise<any>;
+  }: IndexDocArgs): Promise<IndexDocResponseBody>;
+  /**
+   * delete by `docId`
+   */
+  deleteById({
+    docId,
+    queryParams,
+  }: DeleteByIdArgs): Promise<DeleteByIdResponseBody>;
+  /**
+   * delete by `queryParams` or `requestBody`
+   */
+  deleteByQuery({
+    docName,
+    requestBody,
+    queryParams,
+  }: DeleteByQueryArgs): Promise<DeleteByQueryResponseBody>;
 }
 
 export interface ClientMethodsWrapper {
