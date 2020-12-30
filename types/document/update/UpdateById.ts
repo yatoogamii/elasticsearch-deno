@@ -18,7 +18,12 @@ export interface UpdateByIdQueryParams {
 }
 
 export interface UpdateByIdRequestBody {
-  script: any;
+  script?: any;
+  doc?: any;
+  detect_noop?: boolean;
+  upsert?: any;
+  scripted_upsert?: boolean;
+  doc_as_upsert?: boolean;
 }
 
 export interface UpdateByIdResponseBody {

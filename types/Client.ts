@@ -13,6 +13,10 @@ import {
 } from "./document/index/IndexDoc.ts";
 import { SearchArgs, SearchResponseBody } from "./search/Search.ts";
 import { QueryParamsFormaterArgs } from "../utils/queryParamsFormater.ts";
+import {
+  UpdateByIdArgs,
+  UpdateByIdResponseBody,
+} from "./document/update/UpdateById.ts";
 
 export interface ClientInfos {
   host: string;
@@ -60,6 +64,14 @@ export interface ClientMethods {
     requestBody,
     queryParams,
   }: DeleteByQueryArgs): Promise<DeleteByQueryResponseBody>;
+  /**
+   * update by `docId`
+   */
+  updateById({
+    docId,
+    requestBody,
+    queryParams,
+  }: UpdateByIdArgs): Promise<UpdateByIdResponseBody>;
 }
 
 export interface ClientMethodsWrapper {

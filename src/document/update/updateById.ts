@@ -8,15 +8,19 @@ export const updateById = ({
   url,
   queryParamsFormater,
 }: ClientMethodsWrapper) => async ({
-  docName,
   docId,
+  requestBody,
   queryParams,
 }: UpdateByIdArgs): Promise<UpdateByIdResponseBody> => {
   const query = new URL(
-    `${url}/${docName}/${docId}${queryParamsFormater(queryParams) ?? ""}`
+    `${url}/_update/${docId}${queryParamsFormater(queryParams) ?? ""}`
   );
   const response = await fetch(query, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(requestBody),
   });
   return response.json();
 };
