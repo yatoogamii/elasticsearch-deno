@@ -7,13 +7,15 @@ export interface UpdateByIdArgs {
 export interface UpdateByIdQueryParams {
   if_seq_no?: number;
   if_primary_term?: number;
-  pipeline?: string;
-  refresh?: boolean | "wait_for";
+  lang?: string;
+  require_alies?: boolean;
+  refresh?: "wait_for" | boolean;
+  retry_on_conflict?: number;
   routing?: string;
-  master_timeout?: any;
+  _source?: string[] | boolean;
+  _source_excludes?: string[];
+  _source_includes?: string[];
   timeout?: any;
-  version?: number;
-  version_type?: "internal" | "external" | "external_gte";
   wait_for_active_shards?: string;
 }
 

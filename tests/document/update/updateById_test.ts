@@ -12,6 +12,8 @@ test("updateById request", async () => {
     requestBody: {
       script: "ctx._source.name = 'Lucile'",
     },
+    queryParams: {
+    }
   });
 
   console.log(user);
