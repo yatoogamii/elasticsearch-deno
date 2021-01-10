@@ -1,16 +1,16 @@
 import {
   GetByIdResponseBody,
-  GetByIdArgs,
+  GetByIdArgs
 } from "../../../types/document/get/GetById.ts";
 import { ClientMethodsWrapper } from "../../../types/Client.ts";
 
 export const getById = ({
   url,
-  queryParamsFormater,
+  queryParamsFormater
 }: ClientMethodsWrapper) => async <T>({
   docName,
   docId,
-  queryParams,
+  queryParams
 }: GetByIdArgs): Promise<GetByIdResponseBody<T>> => {
   const query = new URL(
     `${url}/${docName}/${docId}${queryParamsFormater(queryParams) ?? ""}`

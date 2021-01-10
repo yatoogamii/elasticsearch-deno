@@ -1,21 +1,21 @@
 import { GetByIdArgs, GetByIdResponseBody } from "./document/get/GetById.ts";
 import {
   DeleteByIdArgs,
-  DeleteByIdResponseBody,
+  DeleteByIdResponseBody
 } from "./document/delete/DeleteById.ts";
 import {
   DeleteByQueryArgs,
-  DeleteByQueryResponseBody,
+  DeleteByQueryResponseBody
 } from "./document/delete/DeleteByQuery.ts";
 import {
   IndexDocArgs,
-  IndexDocResponseBody,
+  IndexDocResponseBody
 } from "./document/index/IndexDoc.ts";
 import { SearchArgs, SearchResponseBody } from "./search/Search.ts";
 import { QueryParamsFormaterArgs } from "../utils/queryParamsFormater.ts";
 import {
   UpdateByIdArgs,
-  UpdateByIdResponseBody,
+  UpdateByIdResponseBody
 } from "./document/update/UpdateById.ts";
 
 export interface ClientInfos {
@@ -30,7 +30,7 @@ export interface ClientMethods {
   search<T>({
     docName,
     requestBody,
-    queryParams,
+    queryParams
   }: SearchArgs): Promise<SearchResponseBody<T>>;
   /**
    * get by `docId`
@@ -38,7 +38,7 @@ export interface ClientMethods {
   getById<T>({
     docName,
     docId,
-    queryParams,
+    queryParams
   }: GetByIdArgs): Promise<GetByIdResponseBody<T>>;
   /**
    * create / update element by `queryParams` or `requestBody` or `docId`
@@ -47,14 +47,14 @@ export interface ClientMethods {
     docName,
     docId,
     requestBody,
-    queryParams,
+    queryParams
   }: IndexDocArgs): Promise<IndexDocResponseBody>;
   /**
    * delete by `docId`
    */
   deleteById({
     docId,
-    queryParams,
+    queryParams
   }: DeleteByIdArgs): Promise<DeleteByIdResponseBody>;
   /**
    * delete by `queryParams` or `requestBody`
@@ -62,7 +62,7 @@ export interface ClientMethods {
   deleteByQuery({
     docName,
     requestBody,
-    queryParams,
+    queryParams
   }: DeleteByQueryArgs): Promise<DeleteByQueryResponseBody>;
   /**
    * update by `docId`
@@ -70,7 +70,7 @@ export interface ClientMethods {
   updateById({
     docId,
     requestBody,
-    queryParams,
+    queryParams
   }: UpdateByIdArgs): Promise<UpdateByIdResponseBody>;
 }
 

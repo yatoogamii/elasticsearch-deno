@@ -1,16 +1,16 @@
 import { ClientMethodsWrapper } from "../../../types/Client.ts";
 import {
   UpdateByIdArgs,
-  UpdateByIdResponseBody,
+  UpdateByIdResponseBody
 } from "../../../types/document/update/UpdateById.ts";
 
 export const updateById = ({
   url,
-  queryParamsFormater,
+  queryParamsFormater
 }: ClientMethodsWrapper) => async ({
   docId,
   requestBody,
-  queryParams,
+  queryParams
 }: UpdateByIdArgs): Promise<UpdateByIdResponseBody> => {
   const query = new URL(
     `${url}/_update/${docId}${queryParamsFormater(queryParams) ?? ""}`
@@ -18,9 +18,9 @@ export const updateById = ({
   const response = await fetch(query, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify(requestBody),
+    body: JSON.stringify(requestBody)
   });
   return response.json();
 };

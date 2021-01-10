@@ -19,6 +19,6 @@ export const client = ({ host, index }: ClientInfos): ClientMethods => {
     updateById: updateById({ url, queryParamsFormater }),
 
     // search APIs
-    search: search({ url, queryParamsFormater }),
+    search: search({ url, queryParamsFormater })
   };
 };
