@@ -17,6 +17,10 @@ import {
   UpdateByIdArgs,
   UpdateByIdResponseBody
 } from "./document/update/UpdateById.ts";
+import {
+  UpdateByQueryArgs,
+  UpdateByQueryResponseBody
+} from "./document/update/UpdateByQuery.ts";
 
 export interface ClientInfos {
   host: string;
@@ -72,6 +76,14 @@ export interface ClientMethods {
     requestBody,
     queryParams
   }: UpdateByIdArgs): Promise<UpdateByIdResponseBody>;
+  /**
+   * update by `query`
+   */
+  updateByQuery({
+    docId,
+    requestBody,
+    queryParams
+  }: UpdateByQueryArgs): Promise<UpdateByQueryResponseBody>;
 }
 
 export interface ClientMethodsWrapper {

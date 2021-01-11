@@ -4,6 +4,7 @@ import { SearchQueryParams } from "../types/search/Search.ts";
 import { IndexDocQueryParams } from "../types/document/index/IndexDoc.ts";
 import { DeleteByQueryQueryParams } from "../types/document/delete/DeleteByQuery.ts";
 import { UpdateByIdQueryParams } from "../types/document/update/UpdateById.ts";
+import { UpdateByQueryParams } from "../types/document/update/UpdateByQuery.ts";
 
 export type QueryParamsFormaterArgs =
   | IndexDocQueryParams
@@ -11,6 +12,7 @@ export type QueryParamsFormaterArgs =
   | SearchQueryParams
   | DeleteByQueryQueryParams
   | UpdateByIdQueryParams
+  | UpdateByQueryParams
   | undefined;
 
 export const queryParamsFormater = (queryParams: QueryParamsFormaterArgs) => {
